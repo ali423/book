@@ -18,7 +18,7 @@ class BookSearchService
                     'q' => $keyword,
                 ])->json();
                 $data = $response['books']['hits']['hits'];
-                Redis::set('search_books_' . $keyword, json_encode($data), 'EX', 600);
+                Redis::set('search_books_' . $keyword, json_encode($data), 'EX', config('setup.book_search.cache_seconds'));
             }
             return [
                 'data' => $data,
