@@ -9,9 +9,7 @@ class AuthController extends Controller
 {
     public function login(LoginRequest $request)
     {
-        dd(auth()->check());
         $data = $request->validated();
-
         if (auth()->attempt($data)) {
             $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
             $response=['token' => $token];
