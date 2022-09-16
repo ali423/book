@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login',[AuthController::class,'login'])->middleware('guest')->name('login');
+Route::post('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 
 Route::middleware('auth:api')->group(function () {
-Route::prefix('search')->name('search.')->group(function (){
-    Route::post('book',[BookController::class,'search'])->name('book');
-});
+    Route::prefix('search')->name('search.')->group(function () {
+        Route::post('book', [BookController::class, 'search'])->name('book');
+    });
 });
 
